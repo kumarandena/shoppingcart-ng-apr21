@@ -1,1 +1,42 @@
-<p>home works!</p>
+<div class="album py-5 bg-light">
+    <div class="container">
+        <div class="d-flex justify-content-end mb-2">
+            <span class="secondary-color"> No of products found: {{products.length}}</span>
+        </div>
+        <div class="row">
+
+            <div class="col-md-4" *ngFor="let product of products">
+                <div class="card mb-4 shadow-sm">
+                    <div class="card-body">
+                        <div class="d-flex flex-row align-items-center">
+                            <div>
+                                <img class="p-img" [src]="product.img">
+                            </div>
+                            <div class="pl-5 flex-grow-1 text-center">
+                                <div class="bold-font">{{ product.name }}</div>
+                                <div class="secondary-color">
+                                    {{ product.quantity }} {{ product.metric }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex-column mt-2">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="secondary-color">Market price</span>
+                                <span class="secondary-color"><del>Rs.{{ product.marketPrice }} </del></span>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center mt-1">
+                                <span class="secondary-color">Last sale price</span>
+                                <span class="secondary-color"><del>Rs.{{ product.lastSalePrice }} </del></span>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center mt-2">
+                            <span class="bold-font">Offer price: Rs.{{ product.currentSalePrice }} </span>
+                            <button type="button" class="btn btn-sm btn-outline-secondary">Add</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
