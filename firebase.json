@@ -1,0 +1,10 @@
+{
+  "hosting": {
+    "public": "dist/shoppingcart-ng-apr21",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}
