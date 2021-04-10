@@ -1,2 +1,26 @@
-hi
+<div class="bg-light d-flex flex-column h-100">
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+      <a class="navbar-brand brand-name">Shopping cart</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+          aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav mr-auto">
+              <ng-container *ngFor="let navItem of navItems">
+                  <li>
+                      <a class="nav-link" [ngClass]="{'active': navItem.isActive}"
+                          [routerLink]="navItem.route">{{navItem.displayName}}</a>
+                  </li>
+              </ng-container>
+          </ul>
+          <div class="navbar-nav mt-2 mt-md-0">
+              <a class="nav-item nav-link active" href="https://github.com/kumarandena/shoppingcart-ng-apr21" target="_blank">Github repo</a>
+          </div>
+      </div>
+  </nav>
 
+  <main role="main" class="p-container" id="main-container">
+      <router-outlet></router-outlet>
+  </main>
+</div>
