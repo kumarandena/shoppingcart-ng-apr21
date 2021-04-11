@@ -1,16 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ChangeDetectorRef } from '@angular/core';
+import { Products } from '../core/products';
+import { ProductsService } from '../core/products.service';
 
-interface products {
-  name: string,
-  img: string,
-  metric: string,
-  quantity: number,
-  marketPrice: number,
-  lastSalePrice: number,
-  currentSalePrice: number,
-  count: number
-}
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
@@ -18,40 +10,23 @@ interface products {
 })
 export class CartComponent implements OnInit {
 
-  products: products[] = [];
-  defaultProducts: products[] = [
-    {
-      name: 'Onion',
-      img: 'https://picsum.photos/200',
-      metric: 'KG',
-      quantity: 1,
-      marketPrice: 90,
-      lastSalePrice: 50,
-      currentSalePrice: 45,
-      count: 1
-    }
-  ];
-
   constructor(
+    public productService: ProductsService,
     private cdr: ChangeDetectorRef
   ) { }
 
-  ngOnInit(): void {
-    for (let index = 0; index < 5; index++) {
-      this.products[index] = { ...this.defaultProducts[0] }
-    }
+  ngOnInit(): void {}
+
+  incrementCount(product: Products) {
+    this.productService.incrementCount(product)
   }
 
-  incrementCount(product: products) {
-    return product.count++;
+  decrementCount(product: Products) {
+    this.productService.decrementCount(product)
   }
 
-  decrementCount(product: products) {
-    return product.count--;
-  }
-
-  get getGrandTotal() {
-    return this.products.map(i => i.currentSalePrice * i.count).reduce((acc, cur) => acc + cur);
+   get getGrandTotal() {
+    return this.productService.getGrandTotal()
   }
 
   ngAfterViewChecked(): void {
