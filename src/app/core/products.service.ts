@@ -56,5 +56,6 @@ export class ProductsService {
 
   removeItemfromCart(index: number) {
     this.products[index].addToCart = false;
+    this.products[index].count = 1;
   }
 }
