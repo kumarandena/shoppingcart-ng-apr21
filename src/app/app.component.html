@@ -10,7 +10,7 @@
               <ng-container *ngFor="let navItem of navItems">
                   <li>
                       <a class="nav-link" [ngClass]="{'active': navItem.isActive}"
-                          [routerLink]="navItem.route">{{navItem.displayName}}</a>
+                          [routerLink]="navItem.route">{{getDisplayName(navItem)}}</a>
                   </li>
               </ng-container>
           </ul>

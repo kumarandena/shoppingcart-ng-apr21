@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavigationEnd, Router, RouterEvent, Event } from '@angular/router';
 import { filter } from 'rxjs/operators';
+import { ProductsService } from './core/products.service';
 interface navItems {
   displayName: string,
   route: string,
@@ -27,7 +28,8 @@ export class AppComponent {
   ];
 
   constructor(
-    private router: Router
+    private router: Router,
+    private productService: ProductsService
   ) {
     this.router.events.pipe(
       filter((e: Event): e is RouterEvent => e instanceof NavigationEnd)
@@ -39,5 +41,11 @@ export class AppComponent {
         })
       }
     });
+  }
+
+  getDisplayName(navItem: any) {
+    if(navItem.displayName == 'Cart') 
+    return `${navItem.displayName} (${this.productService.noOfCartItems()})`;
+    else return navItem.displayName;
   }
 }
