@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { CartComponent } from './cart/cart.component';
 import { CommonModule } from '@angular/common';
+import { ProductsService } from './core/products.service';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,7 @@ import { CommonModule } from '@angular/common';
     CommonModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [ProductsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
