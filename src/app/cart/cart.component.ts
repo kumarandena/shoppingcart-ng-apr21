@@ -34,4 +34,7 @@ export class CartComponent implements OnInit {
     this.cdr.detectChanges();
   }
 
+  removeItemfromCart(index: number) {
+    this.productService.removeItemfromCart(index);
+  }
 }

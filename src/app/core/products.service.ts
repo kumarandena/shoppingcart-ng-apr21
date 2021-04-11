@@ -53,4 +53,8 @@ export class ProductsService {
       this.products[index] = {...this.defaultProducts[0]};
     }
   }
+
+  removeItemfromCart(index: number) {
+    this.products[index].addToCart = false;
+  }
 }
